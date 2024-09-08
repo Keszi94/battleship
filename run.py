@@ -9,14 +9,14 @@ init()
 # The welcome message and game rules printed at the top of the console
 def welcome_message():
     print()
-    print(Fore.MAGENTA + '              WELCOME TO BATTLESHIPS!\n' + Style.RESET_ALL)
+    print(Fore.MAGENTA + 'WELCOME TO BATTLESHIPS!\n' + Style.RESET_ALL)
     print('Rules:\n')
     print('1.: The boards are ' + Fore.MAGENTA + '5x5 ' + Style.RESET_ALL + ', they start from ' + Fore.MAGENTA + 'row 1, column 1.' + Style.RESET_ALL)
     print('2.: Each player has ' + Fore.MAGENTA + '4 ships' + Style.RESET_ALL + ' on their board.') 
     print("3.: Try to sink the computer's ships before it sinks yours.\n")
     print(Fore.MAGENTA + 'Good luck!\n' + Style.RESET_ALL)   
 
-def player_name():
+def player_name_input():
     """
     An inmput field for theplayer to type in their name.
     After the name is given and the player presse enter the game starts.
@@ -29,5 +29,16 @@ def player_name():
     else :
             print(Back.RED + 'Invalid input! Please try again! (no numbers, 10 characters max)' + Style.RESET_ALL)
 
-welcome_message()
-player_name()
+
+
+
+
+def play_game():
+    """ 
+    Runs all the program functions
+
+    """
+    welcome_message()
+    player_name_input()
+
+play_game()
