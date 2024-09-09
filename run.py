@@ -40,13 +40,14 @@ def player_name_input():
 class Boards:
     """
     Creating the dimensions for the playing boards 
+    Placing the ships on the boards in random positions
     """
     
     def __init__(self, size=5, num_ships=4):
-        self.size = size
-        self.num_ships = num_ships
+        self.size = size #default is 5
+        self.num_ships = num_ships #default is 4
         self.board = [[' ' for _ in range(size)] for _ in range(size)]
-        self.place_ships()
+        self.place_ships() #this will call the function that puts the ships into random cells on the board
 
 def place_ships(self):
     """
@@ -54,13 +55,26 @@ def place_ships(self):
     """
     ships_placed = 0
     while ships_placed < self.num_ships:
+        """
+        Generating two random numbers between 0 and 4 for row(x) and column(y) 
+        """
         x = random.randint(0, self.size -1)
         y = random.randint(0, self.size -1)
-        if self.board[x][y] == ' ':
-            self.board[x][y] = 'S'
+        if self.board[x][y] == ' ': #checks if the selected position is empty
+            self.board[x][y] = 'S' #if the position is empty an 'S' is placed for 'Ship'
             ships_placed += 1           
 
-def ships_placed():
+def display_boards(self, board_title, show_ships_pos=False):
+    """
+    This function will display the boards
+    On the player's board the position of the ships will be visible 
+    """ 
+    display = [row[:] for row in self.board]
+    if not show_ships_pos:
+        display = [[' ' if cell == 'S' else cell for cell in row] for row in display]
+    
+    print(f"\n{board_title}") #prints whose board it is above the board (player's board, computer's board)
+    print(tabulate(display, tablfmt="fancy_grid", stralign="center")) #prints the boards
 
 def play_game():
     """ 
@@ -69,6 +83,7 @@ def play_game():
     """
     welcome_message()
     player_name_input()
+
 
 play_game()
 
