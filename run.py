@@ -48,8 +48,19 @@ class Boards:
         self.board = [[' ' for _ in range(size)] for _ in range(size)]
         self.place_ships()
 
-#def place_ships(self):
+def place_ships(self):
+    """
+    Randomly place the 4 ships on the boards 
+    """
+    ships_placed = 0
+    while ships_placed < self.num_ships:
+        x = random.randint(0, self.size -1)
+        y = random.randint(0, self.size -1)
+        if self.board[x][y] == ' ':
+            self.board[x][y] = 'S'
+            ships_placed += 1           
 
+def ships_placed():
 
 def play_game():
     """ 
@@ -60,3 +71,4 @@ def play_game():
     player_name_input()
 
 play_game()
+
