@@ -118,7 +118,7 @@ def player_guess(player_board, computer_board):
     while True:
         try:
             row = int(input("Choose a row (1-5): ")) - 1
-            col = int(input("Choose a column (1-5): \n")) - 1
+            col = int(input("Choose a column (1-5): ")) - 1
             if row not in range(5) or col not in range(5):
                 raise ValueError("You must choose a number between 1 and 5!")
             break
@@ -152,14 +152,31 @@ def play_game():
 # Display the player's and computer's board
     player_board = Boards()
     computer_board = Boards()
+
+    while True:
+
 # Put the titles above the boards
-    player_board.display_boards(board_title="Player's Board:",
-                                show_ships_pos=True)
-    computer_board.display_boards(board_title="Computer's Board:",
-                                  show_ships_pos=False)
+        player_board.display_boards(board_title="Player's Board:",
+                                    show_ships_pos=True)
+        computer_board.display_boards(board_title="Computer's Board:",
+                                      show_ships_pos=False)
 
-# The guesses for the player and the compute
-    player_guess(player_board, computer_board)   
+        """
+        Displays the player/computer guesses
+        Checks if there is a final winner
+        """
+        player_guess(player_board, computer_board) 
 
+        if player_score == 4:
+            print(Fore.GREEN + f"Congratulations {player_name}! You sank all" + 
+                   "the ships!")
+            break
 
+        computer_guess(player_board)
+
+        if computer_score == 4:
+            print(Fore.RED + f"Sorry, {player_name}! The computer" +
+                  "sank all your ships! Better luck next time!")
+
+                 
 play_game()
