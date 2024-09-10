@@ -110,7 +110,7 @@ class Boards:
 
 """
  Print out the inputs asking for the player's guesses
- Print out if anyone had a hit/miss at the en of the round
+ Print out if the player had a hit/miss at the en of the round
  Print out what the player's choice was
 """
 def player_guess(player_board, computer_board):
@@ -118,12 +118,21 @@ def player_guess(player_board, computer_board):
     while True:
         try:
             row = int(input("Choose a row (1-5): ")) - 1
-            col = int(input("Choose a column (1-5): ")) - 1
+            col = int(input("Choose a column (1-5): \n")) - 1
             if row not in range(5) or col not in range(5):
                 raise ValueError("You must choose a number between 1 and 5!")
             break
         except ValueError as e:
             print(f"Invalid input! {e}")
+
+    print(f"Your guess was: " + Fore.MAGENTA + f"row {row + 1} column {col + 1}.\n") 
+    if computer_board.board[row][col] == 'S' :
+        print(Fore.GREEN + "You hit a ship on the computer's board!\n")
+        player_score += 1
+        computer_board.board[row][col] = 'X'
+    else:
+        print(Fore.YELLOW + "You missed!\n")
+        computer_board.board[row][col] = 'O'           
 
 
 def computer_guess(player_board):
