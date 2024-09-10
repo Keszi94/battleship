@@ -148,20 +148,20 @@ def player_guess(player_board, computer_board, player_guesses):
         computer_board.board[row][col] = 'O'
 
 
-def computer_guess(player_board, playe_guesses):
+def computer_guess(player_board, computer_guesses):
     global computer_score
     while True:
         row = random.randint(0, 4)
-        column = random.randint(0,4)
+        col = random.randint(0,4)
         if (row, col) not in computer_guesses:
             computer_guesses.add((row, col))
             break
 
-    print(f"the computer's guess was" + Fore.CYAN + 
+    print(f"the computer's guess was " + Fore.CYAN + 
           f"row {row + 1}, column {col + 1}.'")
 
     if player_board.board[row][col] == 'S':
-        print(Fore.RED + "The computer hir one of your ships!\n")
+        print(Fore.RED + "The computer hit one of your ships!\n")
         computer_score += 1
         player_board.board[row][col] = 'X'
     else:
@@ -184,6 +184,7 @@ def play_game():
         computer_board = Boards()
         # Initialize guesses
         player_guesses = set()
+        computer_guesses = set()
 
         global player_score, computer_score
         player_score = 0
@@ -198,21 +199,18 @@ def play_game():
 
             player_guess(player_board, computer_board, player_guesses)
             computer_guess(player_board, computer_guesses)
-
+ 
         """
-        Displays the player/computer guesses
-        Checks if there is a final winner
+        Check who the final winner is
+        Print he game outcome
         """
-        player_guess(player_board, computer_board)
 
         if player_score == 4:
             print(Fore.GREEN + f"Congratulations {player_name}! You sank all" +
-                  "the ships!")
-            break
-
-        if computer_score == 4:
+                  " the ships!")
+        else:
             print(Fore.RED + f"Sorry, {player_name}! The computer" +
-                  "sank all your ships! Better luck next time!")
+                  " sank all your ships! Better luck next time!")
 
 
 play_game()
