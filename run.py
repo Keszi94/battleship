@@ -138,7 +138,7 @@ def player_guess(player_board, computer_board, player_guesses):
 
     print(f"Your guess was: " + Fore.MAGENTA +
           f"row {row + 1} column {col + 1}.\n")
-    
+
     if computer_board.board[row][col] == 'S':
         print(Fore.GREEN + "You hit a ship on the computer's board!\n")
         player_score += 1
@@ -148,15 +148,32 @@ def player_guess(player_board, computer_board, player_guesses):
         computer_board.board[row][col] = 'O'
 
 
-def computer_guess(player_board):
+def computer_guess(player_board, playe_guesses):
     global computer_score
+    while True:
+        row = random.randint(0, 4)
+        column = random.randint(0,4)
+        if (row, col) not in computer_guesses:
+            computer_guesses.add((row, col))
+            break
+
+    print(f"the computer's guess was" + Fore.CYAN + 
+          f"row {row + 1}, column {col + 1}.'")
+
+    if player_board.board[row][col] == 'S':
+        print(Fore.RED + "The computer hir one of your ships!\n")
+        computer_score += 1
+        player_board.board[row][col] = 'X'
+    else:
+        print(Fore.YELLOW + "The computer missed!\n")
+        player_board.board[row][col] = 'O'       
 
 
 def play_game():
     """
     Runs all the program functions
 
-    """
+    """ 
     welcome_message()
     player_name = player_name_input()
 
@@ -167,9 +184,12 @@ def play_game():
         computer_board = Boards()
         # Initialize guesses
         player_guesses = set()
-        
-        
-        # Put the titles above the boards
+
+        global player_score, computer_score
+        player_score = 0
+        computer_score = 0
+
+# Put the titles above the boards
         while player_score < 4 and computer_score < 4:
             player_board.display_boards(board_title="Player's Board:",
                                         show_ships_pos=True)
@@ -177,7 +197,7 @@ def play_game():
                                           show_ships_pos=False)
 
             player_guess(player_board, computer_board, player_guesses)
-            computer_guess(player_board)
+            computer_guess(player_board, computer_guesses)
 
         """
         Displays the player/computer guesses
@@ -189,8 +209,6 @@ def play_game():
             print(Fore.GREEN + f"Congratulations {player_name}! You sank all" +
                   "the ships!")
             break
-
-        computer_guess(player_board)
 
         if computer_score == 4:
             print(Fore.RED + f"Sorry, {player_name}! The computer" +
