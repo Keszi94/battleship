@@ -1,5 +1,6 @@
 import random
 import re
+import emoji
 from tabulate import tabulate
 from colorama import Fore, Back, Style, init
 
@@ -21,7 +22,7 @@ def welcome_message():
     print(Fore.MAGENTA + 'WELCOME TO BATTLESHIPS!\n')
     print('Rules:\n')
     print('1.: The boards are ' + Fore.MAGENTA + '5x5' + Style.RESET_ALL +
-          ', they start from' + Fore.MAGENTA + 'row 1, column 1.')
+          ', they start from ' + Fore.MAGENTA + 'row 1, column 1.')
     print('2.: Each player has ' + Fore.MAGENTA + '4 ships' + Style.RESET_ALL +
           ' on their board.')
     print("3.: Try to sink the computer's ships before it sinks yours.")
@@ -30,8 +31,8 @@ def welcome_message():
           ", misses will display with an " + Fore.MAGENTA + "'O'.")
     print("5.: You can see your ships on your board marked " + Fore.MAGENTA +
           "'S'.")
-    print("6.: You will have to choose a row(1-5) and a column(1-5) in \
-           each round.\n")
+    print("6.: You will have to choose a row(1-5) and a column(1-5) in" +
+           " each round.\n")
     print(Fore.MAGENTA + 'Good luck!\n')
 
 
@@ -98,8 +99,25 @@ class Boards:
         """Prints whose board it is above the board (player's board,
             computer's board)"""
         print(f"\n{board_title}")
-        """Prints the boards"""
-        print(tabulate(display, tablefmt="double_grid", stralign="center"))
+        
+        """Top border of the boards"""
+        print("  " + "  ".join(["--" for _ in range(self.size)]))
+
+        """Rows of the boards"""
+        for row in display:
+            print("| " + " | ".join(row) + " |")
+            print("  " + "  ".join(["--" for _ in range(self.size)]))
+
+
+def player_guess(player_board, computer_board):
+    global player_score
+
+
+
+def computer_guess(player_board):
+    global computer_score
+
+
 
 
 def play_game():
