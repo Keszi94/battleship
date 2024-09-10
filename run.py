@@ -1,7 +1,6 @@
 import random
 import re
 import emoji
-from tabulate import tabulate
 from colorama import Fore, Back, Style, init
 
 # Initialize colorama for colored text
@@ -109,9 +108,22 @@ class Boards:
             print("  " + "  ".join(["--" for _ in range(self.size)]))
 
 
+"""
+ Print out the inputs asking for the player's guesses
+ Print out if anyone had a hit/miss at the en of the round
+ Print out what the player's choice was
+"""
 def player_guess(player_board, computer_board):
     global player_score
-
+    while True:
+        try:
+            row = int(input("Choose a row (1-5): ")) - 1
+            col = int(input("Choose a column (1-5): ")) - 1
+            if row not in range(5) or col not in range(5):
+                raise ValueError("You must choose a number between 1 and 5!")
+            break
+        except ValueError as e:
+            print(f"Invalid input! {e}")
 
 
 def computer_guess(player_board):
@@ -136,6 +148,9 @@ def play_game():
                                 show_ships_pos=True)
     computer_board.display_boards(board_title="Computer's Board:",
                                   show_ships_pos=False)
+
+# The guesses for the player and the compute
+    player_guess(player_board, computer_board)   
 
 
 play_game()
