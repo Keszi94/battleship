@@ -158,7 +158,7 @@ def computer_guess(player_board, computer_guesses):
             break
 
     print(f"the computer's guess was " + Fore.CYAN + 
-          f"row {row + 1}, column {col + 1}.'")
+          f"row {row + 1}, column {col + 1}.'\n")
 
     if player_board.board[row][col] == 'S':
         print(Fore.RED + "The computer hit one of your ships!\n")
@@ -207,10 +207,16 @@ def play_game():
 
         if player_score == 4:
             print(Fore.GREEN + f"Congratulations {player_name}! You sank all" +
-                  " the ships!")
+                  " the ships!\n")
         else:
             print(Fore.RED + f"Sorry, {player_name}! The computer" +
-                  " sank all your ships! Better luck next time!")
+                  " sank all your ships! Better luck next time!\n")
+
+        play_again = input("Would you like to start a" +
+                           " new game? (y/n): ").strip().lower()
+        if play_again != 'y' :
+            print(Fore.MAGENTA + "Thanks for playing! Bye for now!")
+            break                   
 
 
 play_game()
