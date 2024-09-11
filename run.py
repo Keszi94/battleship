@@ -17,21 +17,22 @@ def welcome_message():
     typed in and the player hits enter.
     """
     print()
-    print(Fore.MAGENTA + 'WELCOME TO BATTLESHIPS!\n')
+    print(Style.BRIGHT + Fore.MAGENTA + 'WELCOME TO BATTLESHIPS!\n')
     print('Rules:\n')
-    print('1.: The boards are ' + Fore.MAGENTA + '5x5' + Style.RESET_ALL +
-          ', they start from ' + Fore.MAGENTA + 'row 1, column 1.')
-    print('2.: Each player has ' + Fore.MAGENTA + '4 ships' + Style.RESET_ALL +
-          ' on their board.')
+    print('1.: The boards are ' + Style.BRIGHT + Fore.MAGENTA + '5x5' +
+          Style.RESET_ALL + ', they start from ' + Style.BRIGHT +
+          Fore.MAGENTA + 'row 1, column 1.')
+    print('2.: Each player has ' + Style.BRIGHT + Fore.MAGENTA + '4 ships' +
+          Style.RESET_ALL + ' on their board.')
     print("3.: Try to sink the computer's ships before it sinks yours.")
-    print("4.: Hits are marked with " + Fore.MAGENTA +
-          "'X'" + Style.RESET_ALL +
-          ", misses will display with an " + Fore.MAGENTA + "'O'.")
-    print("5.: You can see your ships on your board marked " + Fore.MAGENTA +
-          "'S'.")
+    print("4.: Hits are marked with " + Style.BRIGHT + Fore.MAGENTA +
+          "'X'" + Style.RESET_ALL + ", misses will display with an "
+          + Style.BRIGHT + Fore.MAGENTA + "'O'.")
+    print("5.: You can see your ships on your board marked " + Style.BRIGHT +
+          Fore.MAGENTA + "'S'.")
     print("6.: You will have to choose a row(1-5) and a column(1-5) in" +
           " each round.\n")
-    print(Fore.MAGENTA + 'Good luck!\n')
+    print(Style.BRIGHT + Fore.MAGENTA + 'Good luck!\n')
 
 
 def player_name_input():
@@ -151,12 +152,12 @@ def computer_guess(player_board, computer_guesses):
     global computer_score
     while True:
         row = random.randint(0, 4)
-        col = random.randint(0,4)
+        col = random.randint(0, 4)
         if (row, col) not in computer_guesses:
             computer_guesses.add((row, col))
             break
 
-    print(f"the computer's guess was " + Fore.CYAN + 
+    print(f"the computer's guess was " + Fore.CYAN +
           f"row {row + 1}, column {col + 1}.'\n")
 
     if player_board.board[row][col] == 'S':
@@ -165,14 +166,14 @@ def computer_guess(player_board, computer_guesses):
         player_board.board[row][col] = 'X'
     else:
         print(Fore.YELLOW + "The computer missed!\n")
-        player_board.board[row][col] = 'O'       
+        player_board.board[row][col] = 'O'
 
 
 def play_game():
     """
     Runs all the program functions
 
-    """ 
+    """
     welcome_message()
     player_name = player_name_input()
 
@@ -198,7 +199,7 @@ def play_game():
 
             player_guess(player_board, computer_board, player_guesses)
             computer_guess(player_board, computer_guesses)
- 
+
         """
         Check who the final winner is
         Print he game outcome
@@ -213,9 +214,11 @@ def play_game():
 
         play_again = input("Would you like to start a" +
                            " new game? (y/n): ").strip().lower()
-        if play_again != 'y' :
-            print(Fore.MAGENTA + "Thanks for playing! Bye for now!")
-            break                   
+        if play_again != 'y':
+            print(Style.BRIGHT + Fore.MAGENTA +
+                  "Thanks for playing! Bye for now!")
+            break
+
 
 if __name__ == "__main__":
     play_game()
