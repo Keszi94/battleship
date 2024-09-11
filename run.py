@@ -1,6 +1,5 @@
 import random
 import re
-import emoji
 from colorama import Fore, Back, Style, init
 
 # Initialize colorama for colored text
@@ -218,5 +217,5 @@ def play_game():
             print(Fore.MAGENTA + "Thanks for playing! Bye for now!")
             break                   
 
-
-play_game()
+if __name__ == "__main__":
+    play_game()
