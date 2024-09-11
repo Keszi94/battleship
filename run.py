@@ -5,13 +5,12 @@ from colorama import Fore, Back, Style, init
 # Initialize colorama for colored text
 init(autoreset=True)
 
-"""Declaring the player and computer scores globally"""
+# Declaring the player and computer scores globally
 player_score = 0
 computer_score = 0
 
 
 def welcome_message():
-
     """
     The game will start after the correct name is
     typed in and the player hits enter.
@@ -25,9 +24,9 @@ def welcome_message():
     print('2.: Each player has ' + Style.BRIGHT + Fore.MAGENTA + '4 ships' +
           Style.RESET_ALL + ' on their board.')
     print("3.: Try to sink the computer's ships before it sinks yours.")
-    print("4.: Hits are marked with " + Style.BRIGHT + Fore.MAGENTA +
-          "'X'" + Style.RESET_ALL + ", misses will display with an "
-          + Style.BRIGHT + Fore.MAGENTA + "'O'.")
+    print("4.: Hits are marked with " + Style.BRIGHT + Fore.MAGENTA + "'X'" +
+          Style.RESET_ALL + ", misses will display with an " + Style.BRIGHT +
+          Fore.MAGENTA + "'O'.")
     print("5.: You can see your ships on your board marked " + Style.BRIGHT +
           Fore.MAGENTA + "'S'.")
     print("6.: You will have to choose a row(1-5) and a column(1-5) in" +
@@ -56,7 +55,6 @@ class Boards:
     Creating the dimensions for the playing boards
     Placing the ships on the boards in random positions
     """
-
     def __init__(self, size=5, num_ships=4):
         self.size = size  # default is 5
         self.num_ships = num_ships  # default is 4
@@ -108,14 +106,12 @@ class Boards:
             print("  " + "  ".join(["--" for _ in range(self.size)]))
 
 
-"""
- Print out the inputs asking for the player's guesses
- Print out if the player had a hit/miss at the en of the round
- Print out what the player's choice was
-"""
-
-
 def player_guess(player_board, computer_board, player_guesses):
+    """
+     Print out the inputs asking for the player's guesses
+     Print out if the player had a hit/miss at the end of the round
+     Print out what the player's choice was
+    """
     global player_score
     while True:
         try:
@@ -136,7 +132,7 @@ def player_guess(player_board, computer_board, player_guesses):
         except ValueError as e:
             print(f"Invalid input! {e}")
 
-    print(f"Your guess was: " + Fore.MAGENTA +
+    print(f"Your guess was: " + Style.BRIGHT + Fore.MAGENTA +
           f"row {row + 1} column {col + 1}.\n")
 
     if computer_board.board[row][col] == 'S':
@@ -149,6 +145,12 @@ def player_guess(player_board, computer_board, player_guesses):
 
 
 def computer_guess(player_board, computer_guesses):
+    """
+    Creates random computer gueasses
+    Prints out the computer's guess
+    Prints out the computer's outcome for the round
+    """
+
     global computer_score
     while True:
         row = random.randint(0, 4)
@@ -169,6 +171,43 @@ def computer_guess(player_board, computer_guesses):
         player_board.board[row][col] = 'O'
 
 
+def check_winner(player_name, player_score, computer_score):
+    """
+    Check who the final winner is
+    Prints the game outcome
+    """
+
+    if player_score == 4:
+        print(Fore.GREEN + f"Congratulations {player_name}! You sank all" +
+              " the ships!\n")
+    else:
+        print(Fore.RED + f"Sorry, {player_name}! The computer" +
+              " sank all your ships! Better luck next time!\n")
+
+
+def play_again():
+    """
+    The play_again function makes it easy to start a new game
+    by typing in 'y'
+    If the player chooses'no' a goodbye message prints and the game
+    exists
+    If the player enters the wrong input an error message prints
+    """
+    while True:
+        play_again_input = input("Would you like to start a" +
+                                 " new game? (y/n): ").strip().lower()
+
+        if play_again_input == 'y':
+            return True
+        elif play_again_input == 'n':
+            print(Style.BRIGHT + Fore.MAGENTA +
+                  "Thanks for playing! Bye for now!")
+            return False
+        else:
+            print(Back.RED + "Invalid input! Please enter 'y' for" +
+                  "yes or 'n' for no.")
+
+
 def play_game():
     """
     Runs all the program functions
@@ -182,6 +221,7 @@ def play_game():
         # Display the player's and computer's board
         player_board = Boards()
         computer_board = Boards()
+
         # Initialize guesses
         player_guesses = set()
         computer_guesses = set()
@@ -190,7 +230,7 @@ def play_game():
         player_score = 0
         computer_score = 0
 
-# Put the titles above the boards
+        # Put the titles above the boards
         while player_score < 4 and computer_score < 4:
             player_board.display_boards(board_title="Player's Board:",
                                         show_ships_pos=True)
@@ -200,23 +240,10 @@ def play_game():
             player_guess(player_board, computer_board, player_guesses)
             computer_guess(player_board, computer_guesses)
 
-        """
-        Check who the final winner is
-        Print he game outcome
-        """
+        # Checks for the winner
+        check_winner(player_name, player_score, computer_score)
 
-        if player_score == 4:
-            print(Fore.GREEN + f"Congratulations {player_name}! You sank all" +
-                  " the ships!\n")
-        else:
-            print(Fore.RED + f"Sorry, {player_name}! The computer" +
-                  " sank all your ships! Better luck next time!\n")
-
-        play_again = input("Would you like to start a" +
-                           " new game? (y/n): ").strip().lower()
-        if play_again != 'y':
-            print(Style.BRIGHT + Fore.MAGENTA +
-                  "Thanks for playing! Bye for now!")
+        if not play_again():
             break
 
 
