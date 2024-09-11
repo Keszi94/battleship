@@ -180,7 +180,7 @@ def check_winner(player_name, player_score, computer_score):
     if player_score == 4:
         print(Fore.GREEN + f"Congratulations {player_name}! You sank all" +
               " the ships!\n")
-    else:
+    elif computer_score == 4:
         print(Fore.RED + f"Sorry, {player_name}! The computer" +
               " sank all your ships! Better luck next time!\n")
 
