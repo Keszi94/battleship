@@ -232,7 +232,7 @@ def play_game():
 
         # Put the titles above the boards
         while player_score < 4 and computer_score < 4:
-            player_board.display_boards(board_title="Player's Board:",
+            player_board.display_boards(board_title=f"{player_name}'s Board:",
                                         show_ships_pos=True)
             computer_board.display_boards(board_title="Computer's Board:",
                                           show_ships_pos=False)
