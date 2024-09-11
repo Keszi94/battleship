@@ -240,8 +240,13 @@ def play_game():
             player_guess(player_board, computer_board, player_guesses)
             computer_guess(player_board, computer_guesses)
 
-        # Checks for the winner
-        check_winner(player_name, player_score, computer_score)
+        # Checks for a tie
+        if player_score == 4 and computer_score == 4:
+            print(Style.BRIGHT + Fore.YELLOW + "The game is a tie!")
+
+        else:
+            # Checks for the winner
+            check_winner(player_name, player_score, computer_score)
 
         if not play_again():
             break
