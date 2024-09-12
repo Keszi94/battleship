@@ -1,32 +1,158 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleship
 
-Welcome,
+Welcome to my Python terminal battleship game! This game runs in the Code Institute mock terminal on [Heroku](https://id.heroku.com/login).
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+The users main goal is to sink all the computer's ships before the computer sinks theirs. There are 4 ships on both boards each taking up one cell.
 
-## Reminders
+[Here is the live version of my project]()
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+[View Battleship on Github pages](https://github.com/Keszi94/battleship)
 
-## Creating the Heroku app
+![Am i responsive](readme_images/amiresponsive.png)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### How to play
 
-1. `heroku/python`
-2. `heroku/nodejs`
+This game is based on the classic paper/board game. You can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+* The player enters their name and two boards are randpmly generated with 4 ships on each.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+* The computer's ships are hidden, while the player's ships are visible throughout the game.
 
-Connect your GitHub repository and deploy as normal.
+* The guesses are indicated with an 'O' while hits display with an 'X'.
 
-## Constraints
+* In each turn the player and the computer makes a guess and try to sink the other player's ships.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+* The winner is declared after one of the players lost all their ships.
 
----
+I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy gaming!
 
-Happy coding!
+- - - 
+
+## CONTENTS
+ 
+* [Features](#features)
+   
+* [Data Model](#data-model)   
+
+* [Testing](#testing)
+   * [Manual Testing](#manual-testing)
+   * [Bugs](#bugs)
+   * [Validator Testing](#validator-testing)
+
+* [Deployment](#deployment) 
+
+* [Credits](#credits)
+   * [Code Used](#code-used)
+   * [Content](#content)
+   * [Styling](#styling)
+   * [Acknowledgments](#acknowledgments)
+
+
+
+
+## Features    
+
+
+- - - 
+
+## Data Model
+
+![Flowchart](readme_images/flowchart.png)
+
+1. __Game Boards__ _(Class Boards)_
+
+ * I used a class to represent the boards which helps manage the placement of the ships and the grid's stucture. It ensures that ships are placed randomly on the boards at the start of the game and provides a method to also display said boards.
+ * The boards for both the player and the computer are represented as 2D grids with the default size of 5x5. The grids store the ship, hits and misses locations.
+ * Each cell in the grid can contain:
+     * Ship: A ship is placed in th cell, displays as __'S'__
+     * Hit : Result of a player/computer guess that hits a cell with a ship, displays as __'X'__
+     * Miss : Result of a player/computer guess that ht an empty cell, siplays as: __'O'__
+     * Empty space: Means no ship or guess is present in the cell
+
+2. __Ship Placement__ _(place_ships)_
+
+ * Both the player and the computer have 4 ships that are placed randomly on their boards.
+ * The board class handles the placement of the ships, ensuring that the ships are placed randomly, that they are all placed within the boundaries of the grid and that there are now two ships overlapping each other.
+
+3. __Tracking Guesses__ _(player_guess, computer_guess)_
+
+ * All guess coordinates are tracked to ensure that no location is checked more than once.
+ * The guesses are stored in sets to make it easy to check if a guess has already been played or not.
+ * After each guess, the board is updated to show if th eguess was a miss or a hit and then the information is displayed to the player.
+
+4. __Managing Scores__ _(player_guess, computer_guess, check_winner)_
+
+ * The game keeps seperate scores for the player and the computer. These show the number of succesful hits.
+ * The score is updated after each round if a hit was made. The game continues on until one player sinks all of the other opponent's ships or if both hit 4 ships at the same time. 
+
+5. __Restarting the Game__ _(play_again)_
+ 
+ * At the end of each game, the player is given the option to restart. If they choose not to play, the game displays a goodbye message. If they decide to play again, the game resets the boards, ships and the scores.
+
+6. __Complete Game Flow__ _(play_game)_
+ 
+ * At the start, the game prints a welcome message with the rules and asks the player to input their name. _(welcome_message)_
+ * Two boards are created, both the same structure, one for the player, the other for the computer. Both boards have 4 randomly placed ships but only the player's ships are visible.
+ * The gameplay consists of the player and the computer taking turns to guess a grid location on the other's board. After each guess:
+    * The result of the turn is displayed on both boards and recorded (rows/columns guessed, any hits or misses). 
+    * Results of each turn are also printed above the boards. To see these statements the player has to scroll up in the terminal which can be a minor inconvenience to people who find it easier to process information by reading a string rather than seeing the visual cues on the board itself. 
+ * The loop continues on until one player sinks all of their opponent's ships. If they do, they are declared as the winner. If both players hit the last ship on the other's board in the last round, the game is declared a tie.
+ * After the outcome of the game is determined the player is given the option to play again or exit the game.  
+
+- - - 
+
+## Testing
+
+
+### Manual Testing
+
+### Bugs
+
+#### Solved Bugs
+
+#### Remaining Bugs
+
+### Validator Testing
+
+- - - 
+
+## Deployment
+
+This project was deployed using Code Institute's mock terminal for Heroku.
+
+* Steps for deployment:
+  * Fork or clone this repository
+  * Create a new [Heroku](https://id.heroku.com/login) app
+  * Set the buildbacks to _Python_ and _NodeJs_ in that order
+  * Link the Heroku app to the repository
+  * Click on __Deploy__
+
+- - -
+
+## Credits
+
+### Code Used
+
+* I used [this Youtube tutorial](https://www.youtube.com/watch?v=3uKdQx-SZ5A&t=9s) to help me with creating the game logic.
+
+I have used the following websites to gather relevant information during my research:
+* [Stackoverflow](https://stackoverflow.com/)
+* [Reddit](https://www.reddit.com/)
+* [Thecodingforums](https://www.thecodingforums.com/)
+* [W3Schools](https://www.w3schools.com/)
+* [Python.org](https://www.python.org/)
+
+### Content
+
+* I created my Readme file based on [Kera Cudmore's](https://github.com/kera-cudmore) [Bully Book Club](https://github.com/kera-cudmore/Bully-Book-Club) and [TheQuizArms](https://github.com/kera-cudmore/TheQuizArms) Readme files.
+
+### Styling
+
+I have used [colorama](https://pypi.org/project/colorama/) to make the game look visually more engaging and user-friendly by adding color to some of the text.
+
+### Acknowledgments
+
+I would like to acknowledge the following people who helped me along the way in completing my third milestone project:
+
+* [Graeme Taylor](https://github.com/G-Taylor), my Code Institute Mentor.
+- - -

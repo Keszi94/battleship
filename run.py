@@ -16,7 +16,7 @@ def welcome_message():
     typed in and the player hits enter.
     """
     print()
-    print(Style.BRIGHT + Fore.MAGENTA + 'WELCOME TO BATTLESHIPS!\n')
+    print(Style.BRIGHT + Fore.MAGENTA + 'WELCOME TO BATTLESHIP!\n')
     print('Rules:\n')
     print('1.: The boards are ' + Style.BRIGHT + Fore.MAGENTA + '5x5' +
           Style.RESET_ALL + ', they start from ' + Style.BRIGHT +
