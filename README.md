@@ -52,6 +52,39 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
 
 ## Features    
 
+* Taking player's name input
+
+*  Input validation
+      
+   * player can not enter numbers only letters
+   * can not enter anything over 10 characters
+
+ ![name input](readme_images/nameinput.png)
+
+* Random board generation
+  * ships are randomly placed on both the player and computer boards
+  * the player can not see where the computer's ships are
+  * the player's ships are always visible
+
+ ![boards](readme_images/boards.png)
+
+* play against the computer
+* accepts user input
+
+ ![row input](readme_images/rowinput.png)
+
+* keeps scores
+
+ ![row guess](readme_images/rowguess.png)
+
+* Input validation and error-checking in guess input
+  * player can not enter coordinates outside the size of the grid
+  * player must only enter numbers
+  * can not enter the same guess twice 
+
+ ![invalid guesses](readme_images/invalidguesses.png)
+
+* data maintained in class instances
 
 - - - 
 
@@ -103,8 +136,38 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
 
 ## Testing
 
+I have manually tested this project by doing the following:
+ * Checked my code for problems using [PEP8](https://pep8ci.herokuapp.com/).
+ * Given invalid inputs: strings when numbers are expected, out of bounds inputs, repeat inputs
+ * Tested in my local terminal and the Code Institute Heroku terminal
 
 ### Manual Testing
+
+
+| Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
+| --- | --- | --- | --- | --- |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+|  |  |  |  | Pass |
+
 
 ### Bugs
 
@@ -113,6 +176,10 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
 #### Remaining Bugs
 
 ### Validator Testing
+
+* Testing done through PEP8, no errors detected:
+
+![PEP8 test](readme_images/pythonlinter.png)
 
 - - - 
 
