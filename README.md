@@ -74,6 +74,8 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
  ![row input](readme_images/rowinput.png)
 
 * keeps scores
+   
+    * To see these statements the player has to scroll up in the terminal, which can be a minor inconvenience to people who find it easier to process information by reading a string rather than seeing the visual cues on the board.  
 
  ![row guess](readme_images/rowguess.png)
 
@@ -94,12 +96,12 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
 
 1. __Game Boards__ _(Class Boards)_
 
- * I used a class to represent the boards which helps manage the placement of the ships and the grid's stucture. It ensures that ships are placed randomly on the boards at the start of the game and provides a method to also display said boards.
+ * I used a class to represent the boards which helps manage the placement of the ships and the grid's structure. It ensures that ships are placed randomly on the boards at the start of the game and provides a method to also display said boards.
  * The boards for both the player and the computer are represented as 2D grids with the default size of 5x5. The grids store the ship, hits and misses locations.
  * Each cell in the grid can contain:
      * Ship: A ship is placed in th cell, displays as __'S'__
      * Hit : Result of a player/computer guess that hits a cell with a ship, displays as __'X'__
-     * Miss : Result of a player/computer guess that ht an empty cell, siplays as: __'O'__
+     * Miss : Result of a player/computer guess that hits an empty cell, diplays as __'O'__
      * Empty space: Means no ship or guess is present in the cell
 
 2. __Ship Placement__ _(place_ships)_
@@ -111,11 +113,11 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
 
  * All guess coordinates are tracked to ensure that no location is checked more than once.
  * The guesses are stored in sets to make it easy to check if a guess has already been played or not.
- * After each guess, the board is updated to show if th eguess was a miss or a hit and then the information is displayed to the player.
+ * After each guess, the board is updated to show if the guess was a miss or a hit, and then the information is displayed to the player.
 
 4. __Managing Scores__ _(player_guess, computer_guess, check_winner)_
 
- * The game keeps seperate scores for the player and the computer. These show the number of succesful hits.
+ * The game keeps separate scores for the player and the computer. These show the number of successful hits.
  * The score is updated after each round if a hit was made. The game continues on until one player sinks all of the other opponent's ships or if both hit 4 ships at the same time. 
 
 5. __Restarting the Game__ _(play_again)_
@@ -124,11 +126,11 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
 
 6. __Complete Game Flow__ _(play_game)_
  
- * At the start, the game prints a welcome message with the rules and asks the player to input their name. _(welcome_message)_
- * Two boards are created, both the same structure, one for the player, the other for the computer. Both boards have 4 randomly placed ships but only the player's ships are visible.
+ * At the start, the game prints a welcome message with the rules and asks the player to input their name _(welcome_message)_. 
+ * Two boards are created, both the same structure, one for the player, the other for the computer. Both boards get 4 randomly placed ships but only the player's ships are visible.
  * The gameplay consists of the player and the computer taking turns to guess a grid location on the other's board. After each guess:
     * The result of the turn is displayed on both boards and recorded (rows/columns guessed, any hits or misses). 
-    * Results of each turn are also printed above the boards. To see these statements the player has to scroll up in the terminal which can be a minor inconvenience to people who find it easier to process information by reading a string rather than seeing the visual cues on the board itself. 
+    * Results of each turn are also printed above the boards.  
  * The loop continues on until one player sinks all of their opponent's ships. If they do, they are declared as the winner. If both players hit the last ship on the other's board in the last round, the game is declared a tie.
  * After the outcome of the game is determined the player is given the option to play again or exit the game.  
 
@@ -146,8 +148,8 @@ I have manually tested this project by doing the following:
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
+| Player name input | Game starts, input should appear above the player's board | typed in letters only | The game started, input appeared above the player's board | Pass |
+| Invalid player name input | The program should raise an error when numbers are typed in | typed in numbers spereate and with letters |  | Pass |
 |  |  |  |  | Pass |
 |  |  |  |  | Pass |
 |  |  |  |  | Pass |
@@ -172,6 +174,10 @@ I have manually tested this project by doing the following:
 ### Bugs
 
 #### Solved Bugs
+
+#### Known Bugs
+
+NAME TAKES SPEC CHARACTERS isalpha()
 
 #### Remaining Bugs
 

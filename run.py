@@ -41,13 +41,13 @@ def player_name_input():
     Using isalpha() so that the input field only takes letters.
     """
 
-    name = input('Please input your name (no numbers, 10 characters max): ')
-    if len(name) <= 10 and name.isalpha():
-        return name
-    else:
-        print(Back.RED + 'Invalid input! Please try again! (no numbers, 10' +
-              'characters max)' + Style.RESET_ALL + '\n')
-        input('Please input your name (no numbers, 10 characters max): ')
+    while True:
+        name = input('Please input your name (no numbers, 10 characters max): ')
+        if len(name) <= 10 and name.isalpha():
+            return name
+        else:
+            print(Back.RED + 'Invalid input! Please try again! (no numbers, 10' +
+                  ' characters max)' + Style.RESET_ALL + '\n')
 
 
 class Boards:
