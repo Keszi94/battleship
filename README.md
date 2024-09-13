@@ -4,7 +4,7 @@ Welcome to my Python terminal battleship game! This game runs in the Code Instit
 
 The users main goal is to sink all the computer's ships before the computer sinks theirs. There are 4 ships on both boards each taking up one cell.
 
-[Here is the live version of my project]()
+[Here is the live version of my project](https://battleship-by-keszi-7455bc4bf0ea.herokuapp.com/)
 
 [View Battleship on Github pages](https://github.com/Keszi94/battleship)
 
@@ -44,7 +44,7 @@ I hope you will enjoy playing Battleship as much as I enjoyed creating it! Happy
 * [Credits](#credits)
    * [Code Used](#code-used)
    * [Content](#content)
-   * [Styling](#styling)
+   * [Design Tools](#design-tools)
    * [Acknowledgments](#acknowledgments)
 
 
@@ -142,6 +142,7 @@ I have manually tested this project by doing the following:
  * Checked my code for problems using [PEP8](https://pep8ci.herokuapp.com/).
  * Given invalid inputs: strings when numbers are expected, out of bounds inputs, repeat inputs
  * Tested in my local terminal and the Code Institute Heroku terminal
+ * I used [Online python](https://www.online-python.com/) to test my code and logic, allowing me to avoid making major changes on Gitpod and and making comparisons easier.
 
 ### Manual Testing
 
@@ -167,13 +168,21 @@ I have manually tested this project by doing the following:
 
 #### Solved Bugs
 
-#### Known Bugs
+1. When trying to test how the boards would display after creating the Boards Class, the terminal gave me an IndentationError; all the functions meant to be inside the Boards Class were outside of it. 
 
-#### Remaining Bugs
+2. Originally, I used tabulate to design my boards, but the two boards displayed with a significant size difference. I tried several methods to fix this issue, but none gave me the desired result. I decided to abandon using tabulate and created my own board styles manually instead 
+
+3. During one of my test runs, after I entered my guesses, my results were printed, but instead of the expected computer's guess below mine, I received an error message in the terminal. This issue occurred because I mistakenly used the player_guesses parameter in the computer_guess function definition instead of computer_guesses. 
+
+4. During testing, I realized that whenever both boards had 4 hits on the last turn, the player was incorrectly declared the winner. This occurred because there was no logic to determine a tie outcome. Additionally, the check_winner function contained an if/else statement that checked if the player_score was equal to 4 but did not consider the computer_score. I resolved this by replacing the if/else with an if/elif statement and added logic in the play_game function to check for a tie before evaluating the scores.
+
+5. While testing the play_again input in my terminal, I noticed that it accepted the 'y' character correctly and restarted the game as intended. However, any character other than 'n' also caused the game to exit. This issue occured because the if/else statement in the play_again function only checked if the input was 'y' or not 'y'. I resolved this by creating a new play_again function outside of play_game, using a while loop to check for both 'y' and 'n' inputs with if/elif, and using else to print an invalid input error message. 
+
+6. During my latest testing of the name input function, I noticed that while the error message displayed correctly for invalid input, repeating the invalid input immediately would still trigger the error message but allow the game to start anyway. I fixed this by placing the if/else statement inside a while loop. Now, the game won't start until the player provides the correct input.
 
 ### Validator Testing
 
-* Testing done through PEP8, no errors detected:
+* Testing done using PEP8, no errors detected:
 
 ![PEP8 test](readme_images/pythonlinter.png)
 
@@ -197,6 +206,7 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 ### Code Used
 
 * I used [this Youtube tutorial](https://www.youtube.com/watch?v=3uKdQx-SZ5A&t=9s) to help me with creating the game logic.
+* I used [colorama](https://pypi.org/project/colorama/) to enhance the game's visual appeal and user experience by adding color to some of the text.
 
 I have used the following websites to gather relevant information during my research:
 * [Stackoverflow](https://stackoverflow.com/)
@@ -209,9 +219,9 @@ I have used the following websites to gather relevant information during my rese
 
 * I created my Readme file based on [Kera Cudmore's](https://github.com/kera-cudmore) [Bully Book Club](https://github.com/kera-cudmore/Bully-Book-Club) and [TheQuizArms](https://github.com/kera-cudmore/TheQuizArms) Readme files.
 
-### Styling
+### Design Tools
 
-I have used [colorama](https://pypi.org/project/colorama/) to make the game look visually more engaging and user-friendly by adding color to some of the text.
+I used [Lucidchart](https://lucidchart.com/) to create the flowchart that visualizes the game's structure and logic.
 
 ### Acknowledgments
 
