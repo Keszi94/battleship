@@ -148,36 +148,26 @@ I have manually tested this project by doing the following:
 
 | Feature | Expected Outcome | Testing Performed | Result | Pass/Fail |
 | --- | --- | --- | --- | --- |
-| Player name input | Game starts, input should appear above the player's board | typed in letters only | The game started, input appeared above the player's board | Pass |
-| Invalid player name input | The program should raise an error when numbers are typed in | typed in numbers spereate and with letters |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-|  |  |  |  | Pass |
-
+| Player name input | Game starts, after valid input it should appear above the player's board | typed valid name within the character limit | The game started, input appeared as expected | Pass |
+| Invalid player name input | Error message should display when input includes special characters, numbers or if it is too long | typed in special characters, numbers and more than 10 characters | Error message displayed | Pass |
+| Guess row/column input | If valid number (1-5) is typed in the input is accepted, the guess is processed | Entered valid number, 1-5 | Input is accepted, the guess is registered in the game | Pass |
+| Invalid guess row/column input | Error message should display if letter or out of range value is entered | Typed in a letter and numbers out of range | Error message displayed | Pass |
+| Player hit detection | hit should display on computer's board in the guessed cell with an 'X', round outcome message should display | played rounds until I hit a ship on the computer's board | 'X' displayed on the board in the right cell, round outcome message displayed | Pass |
+| Player miss detection | miss should display on computer's board in the guessed cell with an 'O', round outcome message should display | played rounds until I hit an empty cell on the computer's board | 'O' displayed on the board in the right cell, round outcome message displayed | Pass |
+| Computer hit detection | hit should display on player's board in the guessed cell with an 'X', round outcome message should display | played rounds until the computer hit a ship on the player's board | 'X' displayed on the board in the right cell, round outcome message displayed | Pass |
+| Computer miss detection |  miss should display on player's board in the guessed cell with an 'O', round outcome message should display | played rounds until the computer hit an empty cell on the player's board | 'O' displayed on the board in the right cell, round outcome message displayed | Pass |
+| Tie scenario | Game should be declared a tie in the game outcome message when both players get 4 points in the same round | Played game until both me and the computer sank the 4th ship in the last round | "Game is a tie" message displayed | Pass |
+| Player win | Player is declared winner in the game outcome message after reaching 4 points before opponent | Played game until I sunk all the computer's ships | "You win" message displayed | Pass |
+| Computer win | Computer is declared winner in the game outcome message after reaching 4 points before opponent | Played game until computer sunk all the player's ships | "Sorry, computer wins" message displayed | Pass |
+| Play again input - 'y' (yes) | A new game should start after player enters 'y' | Entered 'y' in input field | A new game started. New boards printed, scores were reset | Pass |
+| Play again input - 'n' (no) | A goodbye message should print before the game ends | Entered 'n' in input field | Goodbye message displayed and the game ended | Pass |
+| Invalid play again input | Error message should display when invalid input is entered | Typed in numbers, special characters and words | Error message displayed | Pass |
 
 ### Bugs
 
 #### Solved Bugs
 
 #### Known Bugs
-
-NAME TAKES SPEC CHARACTERS isalpha()
 
 #### Remaining Bugs
 
