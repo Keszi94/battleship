@@ -42,12 +42,13 @@ def player_name_input():
     """
 
     while True:
-        name = input('Please input your name (no numbers, 10 characters max): ')
+        name = input('Please input your name' +
+                     ' (no numbers, 10 characters max): ')
         if len(name) <= 10 and name.isalpha():
             return name
         else:
-            print(Back.RED + 'Invalid input! Please try again! (no numbers, 10' +
-                  ' characters max)' + Style.RESET_ALL + '\n')
+            print(Back.RED + 'Invalid input! Please try again!' +
+                  ' (no numbers, 10 characters max)' + Style.RESET_ALL + '\n')
 
 
 class Boards:
