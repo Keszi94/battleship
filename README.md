@@ -205,7 +205,7 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 
 ### Code Used
 
-* I used [this Youtube tutorial](https://www.youtube.com/watch?v=3uKdQx-SZ5A&t=9s) to help me with creating the game logic.
+* I used [this Youtube tutorial](https://www.youtube.com/watch?v=Ej7I8BPw7Gk&list=PLpeS0xTwoWAsn3SwQbSsOZ26pqZ-0CG6i&ab_channel=DrCodie) to help me with creating the game logic.
 * I used [colorama](https://pypi.org/project/colorama/) to enhance the game's visual appeal and user experience by adding color to some of the text.
 
 I have used the following websites to gather relevant information during my research:
